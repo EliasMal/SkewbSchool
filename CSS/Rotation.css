@@ -1,0 +1,15 @@
+.page {
+    height: 35rem;
+}
+
+.custom-select {
+    font-family: Arial, sans-serif;
+    height: 2.5rem;
+    width: 14rem;
+    font-size: 20px;
+}
+
+#copy {
+    width: 12rem;
+    font-size: 27px;
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ksolve</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/Bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Ksolve.css">
+    <script src="../JS/CopyToClipBoard.js"></script>    
+    <script src="../JS/Ksolve.js"></script>    
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="Rotation.html">Rotation</a></li>
+            <li><a href="" class="active">Ksolve</a></li>
+            <li><a href="Rater.html">Alg rater</a></li>
+            <li><a href="CancelRater.html">Cancel alg rater</a></li>
+            <li><a href="About.html">About</a></li>
+        </ul>
+    </nav>
+<div class="container align-content-center">
+    <div class="page p-2 text-center rounded">
+        <h1>Ksolve</h1>
+        <a href="https://cubing.net/ksolve.js/" target="_blank" class="button"><button class="link">Open Ksolve website</button></a>
+        <div class="row pt-3">
+            <div class="col rounded mx-5 mb-4">
+                <h3>Left textarea</h3>
+                <button id="left">Copy text</button>
+                <div class="container m-2">
+                    <pre class="text-left pt-2">
+Name Skewb
+Set Corners 8 3
+Set Centres 6 1
+                        
+Solved
+Corners
+1 2 3 4 5 6 7 8
+Centres
+1 2 3 4 5 6
+End
+                        
+Move F
+Corners
+1 4 3 5 2 6 7 8
+1 2 0 2 2 0 0 0
+Centres
+2 3 1 4 5 6
+End
+
+Move R
+Corners
+6 2 1 4 5 3 7 8
+2 1 2 0 0 2 0 0
+Centres
+3 2 5 4 1 6
+End
+
+Move L
+Corners
+3 2 8 4 5 6 7 1
+2 0 2 1 0 0 0 2
+Centres
+6 1 3 4 5 2
+End
+
+Move B
+Corners
+1 7 3 2 5 6 4 8
+0 2 1 2 0 0 2 0
+Centres
+5 2 3 4 6 1
+End
+
+Move f
+Corners
+8 2 3 4 5 1 7 6
+2 0 0 0 1 2 0 2
+Centres
+1 4 2 3 5 6
+End
+
+Move r
+Corners
+1 5 3 4 7 6 2 8
+0 2 0 0 2 1 2 0
+Centres
+1 2 4 5 3 6
+End
+
+Move l
+Corners
+1 2 3 7 4 6 5 8
+0 0 0 2 2 0 2 1
+Centres
+1 6 3 2 5 4
+End
+
+Move b
+Corners
+1 2 6 4 5 8 7 3
+0 0 2 0 0 2 1 2
+Centres
+1 2 3 6 4 5
+End
+
+Move z
+Corners
+4 3 7 8 1 2 6 5
+1 2 1 2 2 1 2 1
+Centres
+6 2 1 3 5 4
+End
+
+Move y
+Corners
+2 3 4 1 6 7 8 5
+0 0 0 0 0 0 0 0
+Centres
+1 3 5 4 6 2
+End
+                    </pre>
+                </div>
+            </div>
+            <div class="col rounded mx-5 mb-4">
+                <h3>Right textarea</h3>
+                <button id="right">Copy text</button>
+                <div class="container m-2">
+                    <pre class="text-left pt-2">
+Slack 1
+MaxDepth 11
+
+HTM
+
+MoveLimits
+L* 0
+l* 0
+F* 0
+f* 0
+z* 0
+y* 0
+End
+
+ScrambleAlg
+r' R r R' 
+End
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

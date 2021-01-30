@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rotation Applier</title>
+    <script src="../JS/CopyToClipBoard.js"></script>
+    <script src="../JS/Rotate.js"></script>
+    <script src="../JS/Rotation.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../CSS/Bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Rotation.css">
+
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="" class="active">Rotation</a></li>
+            <li><a href="Ksolve.html">Ksolve</a></li>
+            <li><a href="Rater.html">Alg rater</a></li>
+            <li><a href="CancelRater.html">Cancel alg rater</a></li>
+            <li><a href="About.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="page text-center rounded">
+            <h1 class="py-2">Rotation applier</h1>
+            <div>
+                <label for="alg" class="pr-1">Alg:</label>
+                <input type="text" name="alg" id="alg" placeholder="Algorithm...">
+            </div>
+            <div>
+                <label for="rotation" class="pr-1">Rotation:</label>
+                <select class="custom-select" name="rotation" id="rotation">
+                    <option value="z">z</option>
+                    <option value="z'">z'</option>
+                    <option value="z2">z2</option>
+                    <option value="inverse">Inverse</option>
+                    <option value="zrot">Remove z rotations</option>
+                  </select>
+            </div>
+            <button id="rotate" class="my-3">Apply Rotation</button>
+
+            <p id="inputAlg">Input:</p>
+            <p>Output: <span id="outputAlg"></span></p>
+            <button class="my-2" id="copy">Copy output</button>
+        </div>
+    </div>    
+</body>
+</html>
