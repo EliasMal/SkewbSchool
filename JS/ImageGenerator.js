@@ -22,6 +22,7 @@ function init() {
             settings.style.display = "none";
         }
     })
+    window.addEventListener('resize', show);
 }
 
 function show() {
