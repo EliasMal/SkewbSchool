@@ -2,7 +2,26 @@ window.addEventListener("load", init, false);
 
 function init() {
     show();
-    document.getElementById("gen").addEventListener("click", show, false);
+    const inputFields = document.getElementsByTagName('input');
+    for (let i = 0; i < inputFields.length; i++) {
+        inputFields[i].addEventListener("change", function() {
+            show();
+        });
+        
+    }
+    document.getElementById("download").addEventListener("click", function() {
+        canvasToImage(document.getElementById("image"), document.getElementById("filename").value)
+    }, false)
+
+    document.getElementById("enable-settings").addEventListener("change", function() {
+        const settings = document.getElementById("settings")
+        if (settings.style.display === "none") {
+            settings.style.display = "block";
+        }
+        else {
+            settings.style.display = "none";
+        }
+    })
 }
 
 function show() {
@@ -19,8 +38,29 @@ function show() {
 
     const imageSettings = new ImageSettings(
         document.getElementById("lineWidth").value,
-        document.getElementById("showFirstLayer").checked
+        document.getElementById("showFirstLayer").checked,
+        getCanvasSize()
     );
 
+    getCanvasSize();
+
     showScramble(document.getElementById("image"), document.getElementById("alg").value, imageColors, imageSettings);
+    
+}
+
+function getCanvasSize(){
+    const screenWidth = window.innerWidth;
+    if (screenWidth > 1700) {
+        return 1.5;
+    }
+    else if (screenWidth > 1000) {
+        return 1.2;
+    }
+    else if (screenWidth > 770) {
+        return 1;
+    }
+    else if (screenWidth > 550) {
+        return 0.9
+    }
+    return 0.8;
 }

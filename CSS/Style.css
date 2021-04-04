@@ -36,6 +36,14 @@ input[type=text]:focus {
     width: 19rem;
 }
 
+input[type=number] {
+    font-size: 25px;
+    width: 13rem;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: none;
+    transition: width .35s ease-in-out;
+}
+
 button {
     font-size: 2rem;
     background-color: rgba(255,255,255,0.50);

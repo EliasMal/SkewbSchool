@@ -8,7 +8,6 @@ class ImageColors {
         this._BL = BL;
         this._background = background;
         this._lineColor = lineColor;
-
     }
 
     U() {
@@ -46,16 +45,16 @@ class ImageColors {
 
 class ImageSettings {
 
-    constructor(lineWidth = 3.0, showBottomLayer = true, showTopLayer = true, showFRLayer = true, showFLLayer = true, 
+    constructor(lineWidth = 3.0, showBottomLayer = true, canvasSize = 1, showTopLayer = true, showFRLayer = true, showFLLayer = true, 
         showBRLayer = true, showBLLayer = true) {
         this._lineWidth = lineWidth;
-        this._showBottomLayer = showBottomLayer
-        this._showTopLayer = showTopLayer
-        this._showFRLayer = showFRLayer
-        this._showFLLayer = showFLLayer
-        this._showBRLayer = showBRLayer
-        this._showBLLayer = showBLLayer
-
+        this._showBottomLayer = showBottomLayer;
+        this._showTopLayer = showTopLayer;
+        this._showFRLayer = showFRLayer;
+        this._showFLLayer = showFLLayer;
+        this._showBRLayer = showBRLayer;
+        this._showBLLayer = showBLLayer;
+        this._canvasSize = canvasSize;
     }
 
     lineWidth() {
@@ -84,5 +83,9 @@ class ImageSettings {
 
     showBLLayer() {
         return this._showBLLayer;
+    }
+
+    canvasSize() {
+        return this._canvasSize;
     }
 }

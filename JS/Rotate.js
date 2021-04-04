@@ -62,22 +62,12 @@ function rotate(input, rotation) {
 
         default:
             return input;
-
-    }
-
-        
+    }        
 }
 
 function applyRotation(input, rotation) {
     inputArray = input.split(" ");
-    console.log(inputArray);
     for (let i = 0; i < inputArray.length; i++) {
-        const move = inputArray[i];
-        console.log(move);
-
-        if (move=="R"){
-            console.log("WHATTTT");
-        }
         switch (inputArray[i]) {
             case "r":
                 inputArray[i] = rotation[0];
@@ -122,12 +112,8 @@ function applyRotation(input, rotation) {
             case "z2":
                 inputArray[i] = rotation[10];
                 break;
-
-                default:
-                    console.log("??????")
         }
     }
-    console.log(inputArray.join(" "))
     return inputArray.join(" ");
 }
 
@@ -185,6 +171,10 @@ function rotateOptimally(input) {
     else if ((/R/.test(input)&&(/B/.test(input)))){
         return rotate(input, "z");
     }
+    else if ((/r/.test(input)&&(/B/.test(input)))){
+        return calculateOptimal2genRotation(input);
+    }
+    return input
 }
 
 function calculateOptimal4genRotation(input) {
@@ -196,6 +186,22 @@ function calculateOptimal4genRotation(input) {
         let bcount = ((alg).match(/b/g) || []).length;
         if (bcount < leastbmoves) {
             leastbmoves = bcount
+            output = alg
+        }
+    });
+
+    return output
+}
+
+function calculateOptimal2genRotation(input) {
+    let output = "";
+    let leastBmoves = 100000;
+    
+    ["","z2"].forEach(r => {
+        let alg = rotate(input, r);
+        let bcount = ((alg).match(/B/g) || []).length;
+        if (bcount < leastBmoves) {
+            leastBmoves = bcount
             output = alg
         }
     });

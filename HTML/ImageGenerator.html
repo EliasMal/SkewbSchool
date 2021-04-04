@@ -3,26 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <title>Recog Trainer</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/Bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/ImageGenerator.css">
+
+    <script src="../JS/CanvasToImage.js"></script>
     <script src="../JS/ShowScrambleSettings.js"></script>
     <script src="../JS/ShowScramble.js"></script>
     <script src="../JS/ImageGenerator.js"></script>
 </head>
 <body>
-    <label for="alg">Alg</label>
-    <input type="text" id="alg">
-    <button id="gen">Generate Image</button>
-    <canvas id="image" width="509" height="451"></canvas>
-
-    <input type="color" id="c1" value="#ff7f26">
-    <input type="color" id="c2" value="#26af4d">
-    <input type="color" id="c3" value="#ed1b24">
-    <input type="color" id="c4" value="#3f47cc">
-    <input type="color" id="c5" value="#ffffff">
-    <input type="color" id="c6" value="#fef200">
-
-    <input type="number" id="lineWidth" value="3.0">
-    <input type="color" id="lineColor" value="#000000">
-    <input type="color" id="backgroundColor" value="#ffffff">
-    <input type="checkbox" id="showFirstLayer">
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="Rotation.html">Rotation</a></li>
+            <li><a href="Ksolve.html">Ksolve</a></li>
+            <li><a href="Rater.html">Alg rater</a></li>
+            <li><a href="Rater.html">Cancel alg rater</a></li>
+            <li><a href="" class="active">Image generator</a></li>
+            <li><a href="About.html" >About</a></li>
+        </ul>
+    </nav>
+    <div class="container pb-3">
+        <div class="page p-2 text-center rounded">
+            <h1 class="pb-2">Image generator</h1>
+            <div>
+                <label for="alg">Setup</label>
+                <input type="text" id="alg">
+            </div>
+            <div>
+                <label for="filename">Filename </label>
+                <input type="text" id="filename">
+            </div>
+            <div>
+                <button class="mb-2" id="download">Download image</button>
+            </div>
+            <div>
+                <label for="enable-settings" class="pr-1">Custom settings</label>
+                <input type="checkbox" id="enable-settings">
+            </div>
+            <div>
+                <canvas id="image" width="509" height="451"></canvas>
+            </div>
+            
+            <div class="settings" id="settings" style="display: none;">
+                <div class="text-center">
+                    <div class="row color-picker">
+                        <div class="col-4">
+                            <label for="c1">U</label>
+                            <input type="color" id="c5" value="#ffffff">
+                        </div>
+                        <div class="col-4">
+                            <label for="c1">BL</label>
+                            <input type="color" id="c1" value="#ff7f26">
+                        </div>
+                        <div class="col-4">
+                            <label for="c1">FL</label>
+                            <input type="color" id="c2" value="#26af4d">
+                        </div>
+                        <div class="col-4">
+                            <label for="c1">D</label>
+                            <input type="color" id="c6" value="#fef200">
+                        </div> 
+                        <div class="col-4">
+                            <label for="c1">FR</label>
+                            <input type="color" id="c3" value="#ed1b24">
+                        </div>
+                        <div class="col-4">
+                            <label for="c1">BR</label>
+                            <input type="color" id="c4" value="#3f47cc">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row color-picker-2 py-2">
+                        <div class="col-md-6 col-sm-12">
+                            <label for="lineColor">Line color</label>
+                            <input type="color" id="lineColor" value="#000000">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="backgroundColor">Background color</label>
+                            <input type="color" id="backgroundColor" value="#ffffff">
+                        </div>           
+                    </div>
+                </div>
+                <div>
+                    <div class="row color-picker-2 pb-2">
+                        <div class="col-md-6 col-sm-12 line pb-1">
+                            <label for="lineWidth">Line width: </label>
+                            <input type="number" id="lineWidth" value="3.0">
+                        </div>
+                        <div class="col-md-6 col-sm-12 pb-1">
+                            <label for="showFirstLayer"class="pr-1" >Show first layer</label>
+                            <input type="checkbox" id="showFirstLayer">
+                        </div>           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

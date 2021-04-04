@@ -1,0 +1,45 @@
+.color-picker {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.color-picker label{
+   font-size: 20px;
+}
+
+.color-picker-2 {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.color-picker-2 label{
+   font-size: 20px;
+}
+
+input[type=color] {
+    background-color: rgb(255, 255, 255, 0.7);
+}
+
+.line input[type=number] {
+    font-size: 20px;
+    width: 5rem;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: none;
+    transition: width .35s ease-in-out;
+}
+
+.line label {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .color-picker-2 {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+}
