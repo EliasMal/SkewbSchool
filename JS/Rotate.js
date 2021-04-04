@@ -174,6 +174,9 @@ function rotateOptimally(input) {
     else if ((/r/.test(input)&&(/B/.test(input)))){
         return calculateOptimal2genRotation(input);
     }
+    else if ((/R/.test(input)&&(/b/.test(input)))){
+        return calculateOptimal2genRotation(rotate(input, "z"));
+    }
     return input
 }
 
