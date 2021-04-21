@@ -123,7 +123,7 @@ function rateAlg(input, cancelMove) {
             }
         }
     }
-    score += (9 - moveCount(input))*1.25;
+    score += moveCountReward(input);
 
     return [score, rotateOptimally(input)]
 }
