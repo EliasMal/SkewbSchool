@@ -128,6 +128,16 @@ function rateAlg(input, cancelMove) {
     return [score, rotateOptimally(input)]
 }
 
+function moveCountReward(input) {
+    const moveCount = moveCount(input)
+    if (moveCount < 9) {
+        return (9 - moveCount) * 1.75  
+    }
+    if (moveCount > 9) {
+        return (9 - moveCount) * 1.25  
+    }
+}
+
 function moveCount(input) {
     let count = 0;
     for (let i = 0; i < input.length; i++) {
