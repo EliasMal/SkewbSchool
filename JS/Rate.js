@@ -26,13 +26,13 @@ const triggers = [
         /(r B' r' )|(R b' R' )|(B r' B' )|(b R' b' )/g,  /(r' B r )|(R' b R )|(B' r B )|(b' R b )/g],
 
     //DEDUCTION1
-    [/(R' r' R' r' )|(B' R' B' R' )|(b' B' b' B' )|(r' b' r' b' )/g],
+    [/(R' r' R' r' )|(B' R' B' R' )|(b' B' b' B' )|(r' b' r' b' )/g, /(R r R' r )|(B R B' R )|(b B b' B )|(r b r' b )/g],
 
     //DEDUCTION2
     [/(r B r )|(R b R )|(B r B )|(b R b )/g, /(r' B' r' )|(R' b' R' )|(B' r' B' )|(b' R' b' )/g],
 
     //DEDUCTION3
-    [/(R r R' r )|(B R B' R )|(b B b' B )|(r b r' b )/g],
+    [],
 
     //DEDUCTION4
     [/(R r R r )|(B R B R )|(b B b B )|(r b r b )/g],
@@ -123,7 +123,7 @@ function rateAlg(input, cancelMove) {
             }
         }
     }
-    score += (9 - moveCount(input))*1.5;
+    score += (9 - moveCount(input))*1.25;
 
     return [score, rotateOptimally(input)]
 }

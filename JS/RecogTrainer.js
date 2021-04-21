@@ -11,39 +11,45 @@ let corners = ["", "r' R r R' r' R r R' ", "z r' R r R' r' R r R' z' ", "z2 r' R
     "r' R r R' r' R r R' z' r' R r R' r' R r R' z ", "z r' R r R' r' R r R' z' r' R r R' r' R r R' z2 ", "z2 r' R r R' r' R r R' z' r' R r R' r' R r R' z' ",
     "z' r' R r R' r' R r R' z' r' R r R' r' R r R' "];
 let mode = "O";
+let scramble = ""
+let index = ""
 
-let settings = new ImageSettings();
+const settings = new ImageSettings();
+const colors = new ImageColors()
 
+function init() {
+    oScramble()
+    window.addEventListener("keydown", key, false);
+}
 
 function key(event) {
     let key = event.key;
-
-    if (key === cases[index]||key == casesNumPad[index]||key === "+"){
+    if (key === " "||key === "Enter"){
+        fullScramble();
+    }
+    else if (key === cases[index]||key == casesNumPad[index]||key === "+"){
         if(mode === "O"){
-            showOScramble();
+            oScramble();
         }
         else if (mode === "U") {
-            showUScramble();
+            uScramble();
         }
         else if (mode ==="T"){
-            showTopScramble();
+            tScramble();
         }
     }
-    if (key === " "||key === "Enter"){
-        showFullScramble();
-    }
-    if (key == 0){
+    else if (key == 0){
         if(mode === "O"){
             mode = "U";
-            showUScramble()
+            uScramble()
         }
         else if(mode === "U"){
             mode = "T";
-            showTopScramble();
+            tScramble();
         }
         else if (mode ==="T"){
             mode = "O";
-            showOScramble();
+            oScramble();
         }
     }
 }
@@ -53,9 +59,46 @@ function generateRandomScramble() {
     preRotation = Math.floor(Math.random() * 10);
     afterRotation = Math.floor(Math.random() * 4);
     corner = Math.floor(Math.random() * 0);
-    return rotations[preRotation] + " x' " + corners[corner] + algs[index] + " x' " + rotations[afterRotation];
+    scramble = rotations[preRotation] + " x' " + corners[corner] + algs[index] + " x' " + rotations[afterRotation]
+    return scramble;
 }
 
 function newScramble() {
-    showScramble(document.getElementById("image"), generateRandomScramble())
+    showScramble(document.getElementById("image"), generateRandomScramble(), colors, settings)
+}
+
+function fullScramble() {
+    settings.hideUCenter = false;
+    settings.hideBRCenter = false;
+    settings.hideBLCenter = false;
+    settings.hideFRCenter = false;
+    settings.hideFLCenter = false; 
+    showScramble(document.getElementById("image"), scramble, colors, settings)
+}
+
+function uScramble() {
+    settings.hideUCenter = true;
+    settings.hideBRCenter = true;
+    settings.hideBLCenter = false;
+    settings.hideFRCenter = false;
+    settings.hideFLCenter = false;
+    newScramble()
+}
+
+function oScramble() {
+    settings.hideUCenter = false;
+    settings.hideBRCenter = true;
+    settings.hideBLCenter = true;
+    settings.hideFRCenter = false;
+    settings.hideFLCenter = false;
+    newScramble()
+}
+
+function tScramble() {
+    settings.hideUCenter = false;
+    settings.hideBRCenter = false;
+    settings.hideBLCenter = true;
+    settings.hideFRCenter = true;
+    settings.hideFLCenter = false;
+    newScramble()
 }

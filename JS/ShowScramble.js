@@ -1,7 +1,9 @@
+let hidePieces = false;
 
-function showScramble(canvas, scramble, imageColors, imageSettings) {
+function showScramble(canvas, scramble, imageColors = new ImageColors(), imageSettings = new ImageSettings()) {
     const stickercol = ["o", "o", "o", "o", "o", "g", "g", "g", "g", "g", "y", "y", "y", "y", "y",
         "w", "w", "w", "w", "w", "r", "r", "r", "r", "r", "b", "b", "b", "b", "b"];
+        
 
     var scrsplit = scramble.split(" ");
     for (var i = 0; i < scrsplit.length; i++) {
@@ -173,302 +175,341 @@ function showScramble(canvas, scramble, imageColors, imageSettings) {
         }
     }
 
-    if(!imageSettings.showBottomLayer()) {
-        canvas.height = 300 * imageSettings.canvasSize();
-        canvas.width = 509 *  imageSettings.canvasSize();
+    if(!imageSettings.showBottomLayer) {
+        canvas.height = 300 * imageSettings.canvasSize;
+        canvas.width = 509 *  imageSettings.canvasSize;
     }
     else {
-        canvas.height = 451 * imageSettings.canvasSize();
-        canvas.width = 509 *  imageSettings.canvasSize();
+        canvas.height = 451 * imageSettings.canvasSize;
+        canvas.width = 509 *  imageSettings.canvasSize;
     }
 
     let ctx = canvas.getContext('2d');
     ctx.translate(10, 10);
-    ctx.strokeStyle = imageColors.lineColor();
-    ctx.lineWidth = imageSettings.lineWidth();
+    ctx.strokeStyle = imageColors.lineColor;
+    ctx.lineWidth = imageSettings.lineWidth;
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
-    ctx.fillStyle = imageColors.background();
+    ctx.fillStyle = imageColors.background;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = corrcol(stickercol, 0, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(10 * imageSettings.canvasSize(), 55 * imageSettings.canvasSize());
-    ctx.lineTo(70 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(70 * imageSettings.canvasSize(), 190 * imageSettings.canvasSize());
-    ctx.lineTo(10 * imageSettings.canvasSize(), 85 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 1, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(70 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.lineTo(70 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 2, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 220 * imageSettings.canvasSize());
-    ctx.lineTo(70 * imageSettings.canvasSize(), 190 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 3, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(10 * imageSettings.canvasSize(), 85 * imageSettings.canvasSize());
-    ctx.lineTo(70 * imageSettings.canvasSize(), 190 * imageSettings.canvasSize());
-    ctx.lineTo(10 * imageSettings.canvasSize(), 160 * imageSettings.canvasSize());
-    ctx.lineTo(10 * imageSettings.canvasSize(), 85 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 4, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(10 * imageSettings.canvasSize(), 10 * imageSettings.canvasSize());
-    ctx.lineTo(70 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(10 * imageSettings.canvasSize(), 85 * imageSettings.canvasSize());
-    ctx.lineTo(10 * imageSettings.canvasSize(), 10 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 5, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 6, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 130 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 7, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 280 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 8, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 220 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 9, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(130 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    if (imageSettings.showBottomLayer()) {
+    if (imageSettings.showBLLayer) {
+        if (imageSettings.hideBLCenter) {
+            hidePieces =  true;
+        }
+        ctx.fillStyle = corrcol(stickercol, 0, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(10 * imageSettings.canvasSize, 55 * imageSettings.canvasSize);
+        ctx.lineTo(70 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(70 * imageSettings.canvasSize, 190 * imageSettings.canvasSize);
+        ctx.lineTo(10 * imageSettings.canvasSize, 85 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        if (imageSettings.hideBLCenter) {
+            hidePieces =  false;
+        }
+        ctx.fillStyle = corrcol(stickercol, 1, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(70 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.lineTo(70 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 2, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 220 * imageSettings.canvasSize);
+        ctx.lineTo(70 * imageSettings.canvasSize, 190 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 3, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(10 * imageSettings.canvasSize, 85 * imageSettings.canvasSize);
+        ctx.lineTo(70 * imageSettings.canvasSize, 190 * imageSettings.canvasSize);
+        ctx.lineTo(10 * imageSettings.canvasSize, 160 * imageSettings.canvasSize);
+        ctx.lineTo(10 * imageSettings.canvasSize, 85 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 4, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(10 * imageSettings.canvasSize, 10 * imageSettings.canvasSize);
+        ctx.lineTo(70 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(10 * imageSettings.canvasSize, 85 * imageSettings.canvasSize);
+        ctx.lineTo(10 * imageSettings.canvasSize, 10 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
+    if(imageSettings.showFLLayer) {
+        if (imageSettings.hideFLCenter) {
+            hidePieces =  true;
+        }
+        ctx.fillStyle = corrcol(stickercol, 5, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        if (imageSettings.hideFLCenter) {
+            hidePieces =  false;
+        }
+        ctx.fillStyle = corrcol(stickercol, 6, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 130 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 7, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 280 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 8, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 220 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 9, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(130 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
+    if (imageSettings.showBottomLayer) {
         ctx.fillStyle = corrcol(stickercol, 10, imageColors);
         ctx.beginPath();
-        ctx.moveTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-        ctx.lineTo(250 * imageSettings.canvasSize(), 355 * imageSettings.canvasSize());
-        ctx.lineTo(190 * imageSettings.canvasSize(), 400 * imageSettings.canvasSize());
-        ctx.lineTo(130 * imageSettings.canvasSize(), 295 * imageSettings.canvasSize());
-        ctx.lineTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
+        ctx.moveTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 355 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 400 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 295 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = corrcol(stickercol, 11, imageColors);
         ctx.beginPath();
-        ctx.moveTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-        ctx.lineTo(250 * imageSettings.canvasSize(), 280 * imageSettings.canvasSize());
-        ctx.lineTo(250 * imageSettings.canvasSize(), 355 * imageSettings.canvasSize());
-        ctx.lineTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
+        ctx.moveTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 280 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 355 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = corrcol(stickercol, 12, imageColors);
         ctx.beginPath();
-        ctx.moveTo(250 * imageSettings.canvasSize(), 355 * imageSettings.canvasSize());
-        ctx.lineTo(250 * imageSettings.canvasSize(), 430 * imageSettings.canvasSize());
-        ctx.lineTo(190 * imageSettings.canvasSize(), 400 * imageSettings.canvasSize());
-        ctx.lineTo(250 * imageSettings.canvasSize(), 355 * imageSettings.canvasSize());
+        ctx.moveTo(250 * imageSettings.canvasSize, 355 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 430 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 400 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 355 * imageSettings.canvasSize);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = corrcol(stickercol, 13, imageColors);
         ctx.beginPath();
-        ctx.moveTo(130 * imageSettings.canvasSize(), 295 * imageSettings.canvasSize());
-        ctx.lineTo(190 * imageSettings.canvasSize(), 400 * imageSettings.canvasSize());
-        ctx.lineTo(130 * imageSettings.canvasSize(), 370 * imageSettings.canvasSize());
-        ctx.lineTo(130 * imageSettings.canvasSize(), 295 * imageSettings.canvasSize());
+        ctx.moveTo(130 * imageSettings.canvasSize, 295 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 400 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 370 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 295 * imageSettings.canvasSize);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = corrcol(stickercol, 14, imageColors);
         ctx.beginPath();
-        ctx.moveTo(130 * imageSettings.canvasSize(), 220 * imageSettings.canvasSize());
-        ctx.lineTo(190 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-        ctx.lineTo(130 * imageSettings.canvasSize(), 295 * imageSettings.canvasSize());
-        ctx.lineTo(130 * imageSettings.canvasSize(), 220 * imageSettings.canvasSize());
+        ctx.moveTo(130 * imageSettings.canvasSize, 220 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 295 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 220 * imageSettings.canvasSize);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
     }
-    ctx.fillStyle = corrcol(stickercol, 15, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 16, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(310 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 17, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 130 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 18, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(130 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(130 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 19, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(190 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 10 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(190 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 20, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 21, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(310 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 22, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(310 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 220 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 23, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 250 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 280 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 24, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(250 * imageSettings.canvasSize(), 130 * imageSettings.canvasSize());
-    ctx.lineTo(310 * imageSettings.canvasSize(), 100 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 205 * imageSettings.canvasSize());
-    ctx.lineTo(250 * imageSettings.canvasSize(), 130 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 25, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(430 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(490 * imageSettings.canvasSize(), 85 * imageSettings.canvasSize());
-    ctx.lineTo(430 * imageSettings.canvasSize(), 190 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 26, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(430 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(490 * imageSettings.canvasSize(), 10 * imageSettings.canvasSize());
-    ctx.lineTo(490 * imageSettings.canvasSize(), 85 * imageSettings.canvasSize());
-    ctx.lineTo(430 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 27, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(430 * imageSettings.canvasSize(), 190 * imageSettings.canvasSize());
-    ctx.lineTo(490 * imageSettings.canvasSize(), 85 * imageSettings.canvasSize());
-    ctx.lineTo(490 * imageSettings.canvasSize(), 160 * imageSettings.canvasSize());
-    ctx.lineTo(430 * imageSettings.canvasSize(), 190 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 28, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(430 * imageSettings.canvasSize(), 190 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 220 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = corrcol(stickercol, 29, imageColors);
-    ctx.beginPath();
-    ctx.moveTo(370 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.lineTo(430 * imageSettings.canvasSize(), 40 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 145 * imageSettings.canvasSize());
-    ctx.lineTo(370 * imageSettings.canvasSize(), 70 * imageSettings.canvasSize());
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
+    if (imageSettings.showTopLayer) {
+        if (imageSettings.hideUCenter) {
+            hidePieces =  true;
+        }
+        ctx.fillStyle = corrcol(stickercol, 15, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        if (imageSettings.hideUCenter) {
+            hidePieces =  false;
+        }
+        ctx.fillStyle = corrcol(stickercol, 16, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(310 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 17, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 130 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 18, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(130 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(130 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 19, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(190 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 10 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(190 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
+    if (imageSettings.showFRLayer) {
+        if (imageSettings.hideFRCenter) {
+            hidePieces =  true;
+        }
+        ctx.fillStyle = corrcol(stickercol, 20, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        if (imageSettings.hideFRCenter) {
+            hidePieces =  false;
+        }
+        ctx.fillStyle = corrcol(stickercol, 21, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(310 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 22, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(310 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 220 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 23, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 250 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 280 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 24, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(250 * imageSettings.canvasSize, 130 * imageSettings.canvasSize);
+        ctx.lineTo(310 * imageSettings.canvasSize, 100 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 205 * imageSettings.canvasSize);
+        ctx.lineTo(250 * imageSettings.canvasSize, 130 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
+    if (imageSettings.showBRLayer) {
+        if (imageSettings.hideBRCenter) {
+            hidePieces =  true;
+        }
+        ctx.fillStyle = corrcol(stickercol, 25, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(430 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(490 * imageSettings.canvasSize, 85 * imageSettings.canvasSize);
+        ctx.lineTo(430 * imageSettings.canvasSize, 190 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        if (imageSettings.hideBRCenter) {
+            hidePieces =  false;
+        }
+        ctx.fillStyle = corrcol(stickercol, 26, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(430 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(490 * imageSettings.canvasSize, 10 * imageSettings.canvasSize);
+        ctx.lineTo(490 * imageSettings.canvasSize, 85 * imageSettings.canvasSize);
+        ctx.lineTo(430 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 27, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(430 * imageSettings.canvasSize, 190 * imageSettings.canvasSize);
+        ctx.lineTo(490 * imageSettings.canvasSize, 85 * imageSettings.canvasSize);
+        ctx.lineTo(490 * imageSettings.canvasSize, 160 * imageSettings.canvasSize);
+        ctx.lineTo(430 * imageSettings.canvasSize, 190 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 28, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(430 * imageSettings.canvasSize, 190 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 220 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = corrcol(stickercol, 29, imageColors);
+        ctx.beginPath();
+        ctx.moveTo(370 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.lineTo(430 * imageSettings.canvasSize, 40 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 145 * imageSettings.canvasSize);
+        ctx.lineTo(370 * imageSettings.canvasSize, 70 * imageSettings.canvasSize);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
     ctx.translate(-10, -10);
 }
 
@@ -483,17 +524,19 @@ function fourswap(listname,i,j,k,l) {
 }
 
 function corrcol(list, i, imageColors) {
-    if (list[i] === "o") {
-        return imageColors.BL();
+    if (hidePieces) {
+        return imageColors.hiddenPiece
+    } else if (list[i] === "o") {
+        return imageColors.BL;
     } else if (list[i] === "g") {
-        return imageColors.FL();
+        return imageColors.FL;
     } else if (list[i] === "r") {
-        return imageColors.FR();
+        return imageColors.FR;
     } else if (list[i] === "b") {
-        return imageColors.BR();
+        return imageColors.BR;
     } else if (list[i] === "w") {
-        return imageColors.U();
+        return imageColors.U;
     } else {
-        return imageColors.D();
+        return imageColors.D;
     }
 }

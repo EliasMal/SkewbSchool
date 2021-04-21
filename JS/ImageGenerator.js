@@ -42,9 +42,8 @@ function show() {
         document.getElementById("showFirstLayer").checked,
         getCanvasSize()
     );
-
-    getCanvasSize();
-
+        
+    console.log(imageColors);
     showScramble(document.getElementById("image"), document.getElementById("alg").value, imageColors, imageSettings);
     
 }
