@@ -29,7 +29,7 @@ const triggers = [
     [/(R' r' R' r' )|(B' R' B' R' )|(b' B' b' B' )|(r' b' r' b' )/g, /(R r R' r )|(B R B' R )|(b B b' B )|(r b r' b )/g],
 
     //DEDUCTION2
-    [/(r B r )|(R b R )|(B r B )|(b R b )/g, /(r' B' r' )|(R' b' R' )|(B' r' B' )|(b' R' b' )/g],
+    [/(r B r )|(R b R )|(B r B )|(b R b )/g, /(r' B' r' )|(R' b' R' )|(B' r' B' )|(b' R' b' )/g, /(B R' B R' )|(R r' R r' )|(b B' b B' )|(r b' r b' )/g],
 
     //DEDUCTION3
     [],
@@ -128,16 +128,6 @@ function rateAlg(input, cancelMove) {
     return [score, rotateOptimally(input)]
 }
 
-function moveCountReward(input) {
-    const moveCount = moveCount(input)
-    if (moveCount < 9) {
-        return (9 - moveCount) * 1.75  
-    }
-    if (moveCount > 9) {
-        return (9 - moveCount) * 1.25  
-    }
-}
-
 function moveCount(input) {
     let count = 0;
     for (let i = 0; i < input.length; i++) {
@@ -148,3 +138,14 @@ function moveCount(input) {
     return count;
 
 }
+
+function moveCountReward(input) {
+    const move = moveCount(input)
+    if (move < 9) {
+        return (9 - move) * 1.75  
+    }
+    if (move > 9) {
+        return (9 - move) * 1.25  
+    }
+}
+
